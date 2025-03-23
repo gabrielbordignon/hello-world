@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+    <link rel="stylesheet" href="financeira.css">
+</head>
+<body>
+    <div class="menu">
+        <button class="menu-btn">⋮</button>
+        <div id="menu-dropdown" class="menu-dropdown">
+            <a href="#" onclick="irParaCalculadoraCientifica()">🧮Calculadora Científica</a>
+            <a href="historico.html">📜 Histórico</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Calculadora Financeira</h1>
+        <div class="calculadora">
+            <!-- Área de instruções -->
+            <div id="instrucoes" class="instrucoes">Selecione uma operação financeira</div>
+            <!-- Display principal para números -->
+            <div id="display-area-financeira">
+                <input type="text" id="resultadoFinanceira" disabled>
+            </div>
+            <div class="botoes">
+                <!-- Botões de operações financeiras -->
+                <button onclick="selecionarOperacao('jurosSimples')">Juros Simples</button>
+                <button onclick="selecionarOperacao('jurosCompostos')">Juros Compostos</button>
+                <button onclick="selecionarOperacao('conversaoMoeda')">Conversão de Moeda</button>
+                <button onclick="selecionarOperacao('parcelas')">Parcelas</button>
+                <!-- Teclado numérico -->
+                <button onclick="adicionarValorFinanceira('7')">7</button>
+                <button onclick="adicionarValorFinanceira('8')">8</button>
+                <button onclick="adicionarValorFinanceira('9')">9</button>
+                <button class="apagar-botao" onclick="apagarUltimo()">⌫</button>
+                <button onclick="adicionarValorFinanceira('4')">4</button>
+                <button onclick="adicionarValorFinanceira('5')">5</button>
+                <button onclick="adicionarValorFinanceira('6')">6</button>
+                <button class="enter-botao" onclick="proximoDado()">Enter</button>
+                <button onclick="adicionarValorFinanceira('1')">1</button>
+                <button onclick="adicionarValorFinanceira('2')">2</button>
+                <button onclick="adicionarValorFinanceira('3')">3</button>
+                <button onclick="adicionarValorFinanceira('0')">0</button>
+                <button onclick="adicionarValorFinanceira('.')">.</button>
+                <button onclick="limparFinanceira()">C</button>
+            </div>
+        </div>
+    </div>
+    <script src="financeira.js"></script>
+</body>
+</html>

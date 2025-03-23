@@ -1,0 +1,117 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+.historico-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 15px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.historico {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    max-height: 250px;
+    overflow-y: auto; 
+    color: white;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); 
+}
+
+.historico p {
+    margin: 12px 0; 
+    font-size: 1rem; 
+}
+
+.botoes-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.botao-voltar, .limpar {
+    flex: 1;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.botao-voltar:hover, .limpar:hover {
+    background: linear-gradient(135deg, #3bbab4, #1d65b2);
+    transform: scale(1.05);
+}
+
+.botao-voltar:active, .limpar:active {
+    background: #12496f;
+    transform: scale(0.95);
+}
+
+.financeira-container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    margin: auto;
+}
+#financeira button {
+    background: linear-gradient(135deg, #43cea2, #185a9d);
+    border: none;
+    color: white;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+#financeira button:hover {
+    background: linear-gradient(135deg, #3bbab4, #1d65b2);
+    transform: scale(1.05);
+}
+.botao-voltar {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+.botao-voltar:hover {
+    background: linear-gradient(135deg, #5b6bea, #685ca2);
+    transform: scale(1.05);
+}
+

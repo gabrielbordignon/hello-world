@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Moderna</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <button class="menu-btn" onclick="abrirMenu()">⋮</button>
+            <div id="menu-dropdown" class="menu-dropdown">
+                <a href="#" onclick="abrirHistorico()" class="menu-historico-btn">📜 Histórico</a>
+                <a href="#" onclick="abrirCalculadoraFinanceira()">💰 Calculadora Financeira</a>
+            </div>
+        </div>
+                
+        <h1>Calculadora Científica</h1>
+        <div class="calculadora">
+            <div id="display-area">
+                <input type="text" id="resultado" disabled>
+            </div>
+            <div class="botoes">
+                <button onclick="calcularCientifica('sin')">sin</button>
+                <button onclick="calcularCientifica('cos')">cos</button>
+                <button onclick="calcularCientifica('tan')">tan</button>
+                <button onclick="calcularCientifica('sqrt')">√</button>
+                <button onclick="calcularCientifica('log')">log</button>
+                <button onclick="calcularCientifica('exp')">exp</button>
+                <button onclick="limpar()">C</button>
+                <button onclick="apagarUltimo()">⌫</button>
+                <button onclick="adicionarValor('7')">7</button>
+                <button onclick="adicionarValor('8')">8</button>
+                <button onclick="adicionarValor('9')">9</button>
+                <button onclick="adicionarOperacao('/')">÷</button>
+                <button onclick="adicionarValor('4')">4</button>
+                <button onclick="adicionarValor('5')">5</button>
+                <button onclick="adicionarValor('6')">6</button>
+                <button onclick="adicionarOperacao('*')">x</button>
+                <button onclick="adicionarValor('1')">1</button>
+                <button onclick="adicionarValor('2')">2</button>
+                <button onclick="adicionarValor('3')">3</button>
+                <button onclick="adicionarOperacao('-')">-</button>
+                <button onclick="adicionarValor('0')">0</button>
+                <button onclick="adicionarValor('.')">.</button>
+                <button onclick="calcular()">=</button>
+                <button onclick="adicionarOperacao('+')">+</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

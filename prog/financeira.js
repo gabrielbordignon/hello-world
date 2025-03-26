@@ -1,14 +1,12 @@
-// Elementos globais
 const resultadoFinanceira = document.getElementById("resultadoFinanceira"); // Certifique-se que o ID corresponde no HTML
 const instrucoes = document.getElementById("instrucoes");
+const dolar = 5.71
 
-// Variáveis de controle
 let historico = JSON.parse(localStorage.getItem("historico")) || [];
 let operacaoSelecionada = ""; // Operação financeira atual
 let dadosOperacao = []; // Dados fornecidos pelo usuário
 let passoAtual = 0; // Controla o passo da operação
 
-// Limpa o display e reseta os dados
 function limparFinanceira() {
     if (!resultadoFinanceira || !instrucoes) return; // Proteção contra elementos ausentes
     resultadoFinanceira.value = "";
@@ -18,7 +16,7 @@ function limparFinanceira() {
     passoAtual = 0;
 }
 
-// Adiciona valores ao display
+
 function adicionarValorFinanceira(valor) {
     if (!resultadoFinanceira) return;
     resultadoFinanceira.value += valor;
@@ -58,7 +56,7 @@ function proximoDado() {
         resultadoFinanceira.value = "";
         passoAtual++;
 
-        // Lógica baseada na operação selecionada
+        
         switch (operacaoSelecionada) {
             case "jurosSimples":
                 if (passoAtual === 1) {
@@ -82,9 +80,7 @@ function proximoDado() {
 
             case "conversaoMoeda":
                 if (passoAtual === 1) {
-                    instrucoes.innerText = "Digite a taxa de câmbio:";
-                } else if (passoAtual === 2) {
-                    calcularConversaoMoeda(dadosOperacao[0], dadosOperacao[1]);
+                    calcularConversaoMoeda(dadosOperacao[0], dolar)
                 }
                 break;
 
@@ -106,7 +102,7 @@ function proximoDado() {
     }
 }
 
-// Operações financeiras
+
 function calcularJurosSimples(principal, taxa, tempo) {
     const juros = principal * (taxa / 100) * tempo;
     resultadoFinanceira.value = `Juros: R$${juros.toFixed(2)}`;
@@ -121,8 +117,8 @@ function calcularJurosCompostos(principal, taxa, tempo) {
     salvarNoHistorico(`Juros Compostos: Principal R$${principal}, Taxa ${taxa}%, Tempo ${tempo} anos = Montante R$${montante.toFixed(2)}`);
 }
 
-function calcularConversaoMoeda(valor, taxa) {
-    const convertido = valor * taxa;
+function calcularConversaoMoeda(valor, dolar){
+    const convertido = valor * dolar;
     resultadoFinanceira.value = `R$${convertido.toFixed(2)}`;
     instrucoes.innerText = "Conversão concluída!";
     salvarNoHistorico(`Conversão: US$${valor} = R$${convertido.toFixed(2)}`);
@@ -149,7 +145,7 @@ function apagarUltimo() {
 }
 
 function irParaCalculadoraCientifica() {
-    window.location.href = "index.html"; // Certifique-se de que o caminho está correto
+    window.location.href = "index.html"; 
 }
 
 document.addEventListener("keydown", function (event) {
@@ -164,5 +160,7 @@ document.addEventListener("keydown", function (event) {
         apagarUltimo()
     }else if (tecla === "c") {
         limparFinanceira()
+    }else if (tecla === ".") 
+        adicionarValorFinanceira (".")
     }
-})
+)

@@ -33,16 +33,15 @@ function limpar() {
 
 // Redireciona para a calculadora correta com base no localStorage
 function voltarCalculadora() {
-    const origem = localStorage.getItem("origemCalculadora"); // Obtém a origem armazenada
+    const origem = localStorage.getItem("origemCalculadora"); 
 
-    // Redireciona com base na origem
+
     if (origem === "financeira") {
-        window.location.href = "financeira.html"; // Certifique-se de que o arquivo existe
+        window.location.href = "financeira.html"
     } else if (origem === "cientifica") {
-        window.location.href = "index.html"; // Certifique-se de que este é o caminho correto
+        window.location.href = "index.html";
     } else {
-        // Caso não haja origem definida, redireciona para a calculadora científica como padrão
+        
         window.location.href = "index.html";
     }
 }
-

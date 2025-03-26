@@ -1,17 +1,13 @@
-// Variáveis globais
 let resultado = document.getElementById("resultado"); // Campo do display da calculadora
 let expressao = ""; // Expressão atual exibida no display
 let historico = JSON.parse(localStorage.getItem("historico")) || []; // Histórico de cálculos
 
-// **Funções da Calculadora Científica**
 
-// Adiciona valores (números) ao display
 function adicionarValor(valor) {
     expressao += valor;
     resultado.value = formatarExpressao(expressao);
 }
 
-// Adiciona operações (+, -, *, /) ao display
 function adicionarOperacao(operacao) {
     switch (operacao) {
         case '/':
@@ -156,5 +152,7 @@ document.addEventListener("keydown", function (event) {
         apagarUltimo();
     }else if (tecla === "c") {
         limpar()
+    }else if (tecla === ".") {
+        adicionarValor (".")
     }
 });

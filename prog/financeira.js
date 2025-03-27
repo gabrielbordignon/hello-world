@@ -148,6 +148,15 @@ function irParaCalculadoraCientifica() {
     window.location.href = "index.html"; 
 }
 
+function abrirHistorico () {
+    window.location.href = "historico.html";
+}
+
+function abrirMenu() {
+    const menuDropdown = document.getElementById("menu-dropdown");
+    menuDropdown.style.display = menuDropdown.style.display === "block" ? "none" : "block";
+}
+
 document.addEventListener("keydown", function (event) {
     const tecla = event.key;
     

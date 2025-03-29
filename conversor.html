@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de TXT para PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        input {
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            margin-top: 20px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor de TXT para PDF</h1>
+        <input type="file" id="arquivoTxt" accept=".txt">
+        <button onclick="gerarPDF()">Gerar PDF</button>
+        <iframe id="pdfView"></iframe>
+    </div>
+
+    <script>
+        async function gerarPDF() {
+            const fileInput = document.getElementById('arquivoTxt');
+            const pdfView = document.getElementById('pdfView');
+
+            if (!fileInput.files.length) {
+                alert('Por favor, selecione um arquivo .txt.');
+                return;
+            }
+
+            const arquivo = fileInput.files[0];
+            const texto = await arquivo.text();
+
+            const { jsPDF } = window.jspdf;
+            const pdf = new jsPDF();
+
+            pdf.text(texto, 10, 10);
+
+            const pdfURL = pdf.output('bloburl');
+            pdfView.src = pdfURL;
+
+            const link = document.createElement('a');
+            link.href = pdfURL;
+            link.download = 'arquivo.pdf';
+            link.textContent = 'Clique aqui para baixar o PDF gerado';
+            link.style.display = 'block';
+            link.style.marginTop = '10px';
+            document.body.appendChild(link);
+        }
+    </script>
+</body>
+</html>

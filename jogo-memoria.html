@@ -1,0 +1,77 @@
+const palavras = [
+            "RAM", "CPU", "DISCO", "CACHE", "DADO", "BIT", "BYTE", "BUS", "ROM", "ALU",
+            "PC", "GPU", "SSD", "HD", "PORTA", "BARRAMENTO", "REGISTRADOR", "CLOCK"
+        ];
+        let sequencia = [];
+        let pontos = 0;
+        let mostrando = false;
+        let tentativas = 0;
+
+        function gerarSequencia(tamanho) {
+            let seq = [];
+            for (let i = 0; i < tamanho; i++) {
+                if (Math.random() < 0.5) {
+                    seq.push(palavras[Math.floor(Math.random() * palavras.length)]);
+                } else {
+                    seq.push(Math.floor(Math.random() * 90 + 10)); // número de 2 dígitos
+                }
+            }
+            return seq;
+        }
+
+        function mostrarSequencia() {
+            mostrando = true;
+            document.getElementById('message').textContent = '';
+            document.getElementById('inputArea').style.display = 'none';
+            document.getElementById('userInput').value = '';
+            document.getElementById('sequence').textContent = sequencia.join(' - ');
+            setTimeout(() => {
+                document.getElementById('sequence').textContent = '';
+                document.getElementById('inputArea').style.display = 'block';
+                document.getElementById('userInput').focus();
+                mostrando = false;
+            }, 2500 + sequencia.length * 400);
+        }
+
+        function startGame() {
+            pontos = 0;
+            document.getElementById('score').textContent = "Pontos: 0";
+            document.getElementById('startBtn').style.display = 'none';
+            proximaRodada();
+        }
+
+        function proximaRodada() {
+            tentativas = 0;
+            let tamanho = 3 + Math.floor(pontos / 2);
+            sequencia = gerarSequencia(tamanho);
+            mostrarSequencia();
+        }
+
+        function checkAnswer() {
+            if (mostrando) return;
+            const resposta = document.getElementById('userInput').value.trim().toUpperCase();
+            const correta = sequencia.join(' - ').toUpperCase();
+            if (resposta === correta) {
+                pontos++;
+                document.getElementById('score').textContent = "Pontos: " + pontos;
+                document.getElementById('message').textContent = "Correto! Próxima rodada...";
+                setTimeout(proximaRodada, 1400);
+                document.getElementById('inputArea').style.display = 'none';
+            } else {
+                tentativas++;
+                let dica = "";
+                if (tentativas === 1) {
+                    dica = "Dica: A sequência começa com '" + sequencia[0] + "'";
+                } else if (tentativas === 2) {
+                    dica = "Dica: A sequência termina com '" + sequencia[sequencia.length - 1] + "'";
+                } else {
+                    dica = "Tente novamente!";
+                }
+                document.getElementById('message').textContent = "Errado! " + dica;
+            }
+        }
+
+        // Permite pressionar Enter para enviar resposta
+        document.getElementById('userInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') checkAnswer();
+        });
